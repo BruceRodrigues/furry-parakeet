@@ -1,45 +1,9 @@
-spring:
-  application:
-    name: "config"
+server:
+  port: 8081
 
+spring:
   cloud:
     config:
       server:
         git:
-          uri: "git@github.com:BruceRodrigues/furry-parakeet.git"
-          ignore-local-ssh-settings: true
-          private-key: |
-            -----BEGIN RSA PRIVATE KEY-----
-            MIIEpAIBAAKCAQEA78V3nNV6OmtLfxW8Z6VqZ+WeuwFSTQvXdohPtdJdDtedFBq1
-            H5dqPvMKPUOFL9fwHs8R7e/1rrXR0wHTXr332DNE4EBYAL82iNa1IcN0ma2dSwMr
-            d5+YXnlWCte0o54/UoxCAuTQ57R/XelUwLEjHCtnAbOfvnux7s913Y8k49pTzmRX
-            t0Ob7zefRL8126IDOaleWIyo6gMEIJqFGcMsCHzGa0YevycBN7WO8DLvEgFWrETm
-            qanRxmd590oRvacMzcz76LQg5yq8xmb5eUTPy6mvlm8EFEsIBvQVJPrr8fYDzcTW
-            onCqPqixjzX4hMUy35kgoFSfUKw3c+/2Sj8EvwIDAQABAoIBAQCdl7mVgI6UxR7b
-            CatKqGN2pGqe2TCB6W2Vv+Q8SmbVsYvRwfgYKoovk8jAGZf5qUFuzoUnUZe2XFTs
-            DoAh/lRfatszVbdBzmwGprBo37HMrFr9CblRJ7mbJr8R41McU4+lLwDYLBLOqEkq
-            rYkCGatNAY3zhV9ScLSzlPIQTNxfUUQjR57SqkQNSxQy57H123LiVMrwGZkm3hUw
-            iOGG6TUCAuIN3F6PsXpOAZ73aDo/L9+APPVbs8cbIqCw2gJYfnkM3mPOdkPWWP/T
-            AF+NCTITUMrppE7PNe5BMknkS5GbT7sz3NX86L6TAkkka0khX5ntRacsVYlOkzPO
-            X6CB4iGBAoGBAPhKrKwmsVZQorW6kF/6YMktV2bMl6jqf4OJ61QUxwSInBZmVYEy
-            De6CGDs4PPrAzE1BFjEBpwEzHEfYofSLdbP5whIuOUZPQiNT/fBI/IQIJLfz3UVV
-            q17s7nVIteMXDeqAAmSb/OboqNEYyp9dz+xZbM2no1asF6qbcQwx4xR/AoGBAPc3
-            E45h3qqhoruoshD8pnCNxnNZOS2RM7WoMsQSRn9Oz9munpYAxk8l6o7dSExiyUWi
-            PJ/1wI5W/AjP7Iq/o+Et5+2CVzqhb7cb6bUIFCT2yRqXA7tDyvKO0aU3uD4bL3kC
-            HYG/DBORzlWDndBhElFXYqvbW+are7AVwUCVFu/BAoGAHH11EsvdzWmzQecGafzw
-            3iS1wrX3MQq3VwCcYCmCLKMARhG3/fsgXh3PafwqAxvcVYECat0lrJ2QwS26Z7UY
-            7G3cNvnW2Jp/nE4m9UtqrjvA+tqgqTQLVfkZ45tUQ5qBnkbR/3lmq5hGxrdxiJfb
-            I+Oe+Hoj4+4bSRhNAHk49UECgYB/XdPohon29WHnN0nOsKx7zr+QzEZGMMoobGkD
-            VbsWeh9iMrIn7Gw/ePR4+I74M+koxCZh73Zun2gojh97eLLRIBqe5olUfroU5/+n
-            smrWhIMl/OoCQDI+d9CRQ7zb2pvBx5I2N5zcNEHPEwlqw6hxWglPK6wUkwMdvIed
-            Y3K2wQKBgQDp9xXmCU4uuhcFa9FwMDvLXOvIhqTTXyeK3X2pV/4aNgk2Bfs+sqYF
-            Fm/zlPHTiQcKpaHzsZcTmAdbv5xbzhhiz5eKEImtLI6KgSZy1NycX/pf9TKmr904
-            58RXj7Qj3da1zivt5YcoqU/1fI4ywX47LpEkE7V3cy9FEQwJakmkJw==
-            -----END RSA PRIVATE KEY-----
-  security:
-    user:
-      name: config
-      password: admin
-      
-server:
-  port: 8085
+          uri: https://github.com/BruceRodrigues/config-repo
