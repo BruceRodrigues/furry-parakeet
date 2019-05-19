@@ -7,3 +7,5 @@ spring:
       server:
         git:
           uri: https://github.com/BruceRodrigues/config-repo
+  application:
+    name: config
