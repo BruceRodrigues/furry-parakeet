@@ -23,6 +23,7 @@
 		<module>config</module>
 		<module>eureka</module>
 		<module>admin</module>
+		<module>user</module>
 	</modules>
 
 	<dependencies>
