@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: user_db
+    build: database/
+    ports:
+      - 33060:33060
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_DATABASE: USUARIO
+    command: --init-file /User.sql
