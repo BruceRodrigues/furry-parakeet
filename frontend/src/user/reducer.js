@@ -2,7 +2,7 @@ const defaultState = {
     step: 0
 }
 
-const user = (state = [], action) => {
+const user = (state = defaultState, action) => {
     switch (action.type) {
         default:
             return state
