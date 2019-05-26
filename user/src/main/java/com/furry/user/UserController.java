@@ -18,9 +18,10 @@ public class UserController {
         return new ResponseEntity<>(this.repository.findById(id).get(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-    public void add(@ModelAttribute("user") User user) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<String> add(@ModelAttribute("user") User user) {
         this.repository.save(user);
+        return new ResponseEntity<>("Usuário salvo com sucesso", HttpStatus.OK);
     }
 
 

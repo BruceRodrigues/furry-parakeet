@@ -1,6 +1,9 @@
 package com.furry.user;
 
 import com.furry.user.model.User;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -46,5 +54,28 @@ public class UserIntegrationTest {
 			.andExpect(jsonPath("password").value("secret"))
 			.andExpect(jsonPath("username").value("username"));
 	}
+
+	@Test
+    public void testAdd() throws Exception {
+
+	    //Test request
+	    this.mockMvc.perform(post("/user/add")
+            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .content(EntityUtils.toString(new UrlEncodedFormEntity(Arrays.asList(
+                    new BasicNameValuePair("id", "2"),
+                    new BasicNameValuePair("name", "Test"),
+                    new BasicNameValuePair("password", "secret2"),
+                    new BasicNameValuePair("username", "username2")
+            )))))
+        .andExpect(status().isOk())
+        .andExpect(content().string("Usuário salvo com sucesso"));
+
+	    //Test saved entity
+        Optional<User> user = this.repository.findById(2L);
+        assertThat(user.get().getId()).isEqualTo(2);
+        assertThat(user.get().getName()).isEqualTo("Test");
+        assertThat(user.get().getPassword()).isEqualTo("secret2");
+        assertThat(user.get().getUsername()).isEqualTo("username2");
+    }
 
 }
