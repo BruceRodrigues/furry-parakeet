@@ -4,16 +4,3 @@ spring:
   cloud:
     config:
       uri: http://localhost:8081
-  datasource:
-    url: jdbc:mysql://localhost:3306/USUARIO
-    username: user
-    password: user
-    name: USUARIO
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

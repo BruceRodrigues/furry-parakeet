@@ -1,6 +1,8 @@
 package com.furry.user.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,10 +11,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "TB_USUARIO")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CO_SEQ_USUARIO")
     private Long id;
 
@@ -24,5 +28,9 @@ public class User {
 
     @Column(name = "DS_USUARIO")
     private String username;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CO_ENDERECO")
+    private Endereco endereco;
 
 }
