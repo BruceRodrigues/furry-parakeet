@@ -1,11 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Grid from '@material-ui/core/Grid'
-import InformationStep from './informations'
+import InformationStep from './InformationStep'
 
 const steps = ['Perfil', 'Informações gerais']
 
@@ -14,8 +14,8 @@ class View extends React.Component {
     render() {
         return (
             <div>
-                <Grid container>
-                    <Grid item xs={12} md={12} sm={12} lg={12}>
+                <Grid container justify="center">
+                    <Grid item xs={6} md={6} sm={6} lg={6}>
                         <Stepper activeStep={this.props.current}>
                             {steps.map((label, index) => {
                                 return (
@@ -27,7 +27,7 @@ class View extends React.Component {
                         </Stepper>
                     </Grid>
                     <Grid item xs={12}>
-                        <InformationStep/>
+                        <InformationStep />
                     </Grid>
                 </Grid>
             </div>
@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => {
+    onSaveClicked: id => {
     }
 })
 
