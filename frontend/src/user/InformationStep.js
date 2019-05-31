@@ -13,9 +13,9 @@ class InformationStep extends React.Component {
     render() {
         return (
             <div>
-                <form autoComplete="off" onSubmit={this.props.onSaveClicked(this.props)}>
+                <form autoComplete="off">
                     <UsuarioInfo props={this.props} />
-                    <EnderecoInfo props={this.props}/>
+                    <EnderecoInfo endereco={this.props.endereco}/>
                     <Button variant="contained" color="primary" type="submit">Salvar</Button>
                 </form>
             </div>
@@ -61,61 +61,69 @@ const UsuarioInfo = ({ props }) =>
     )
 
 
-const EnderecoInfo = ({ props }) => (
-    <Grid container direction="column" justify="flex-start" spacing={8} alignItems="flex-start">
+const EnderecoInfo = (props) => (
+    <Grid container justify="flex-start" spacing={8} alignItems="flex-start">
         <Grid item xs={12}>
             <Typography variant="h5" align="left">Endereço</Typography>
         </Grid>
         <Grid item xs={12}>
             <Divider />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item>
             <TextField
                 label="CEP"
                 variant="outlined"
-                value={props.cep}
+                value={props.endereco.nuCep}
             />
         </Grid>
-        <Grid item xs={6}>
-            <TextField
-                label="Município"
-                variant="outlined"
-                value={props.municipio}
-            />
-        </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={1}>
             <TextField
                 label="UF"
                 variant="outlined"
-                value={props.uf}
+                value={props.endereco.sgUf}
+            />
+        </Grid>
+        <Grid item xs={1}>
+            <TextField
+                label="IBGE"
+                variant="outlined"
+                value={props.endereco.coMunicipio}
+            />
+        </Grid>
+        <Grid item xs={6}>
+            <TextField
+                fullWidth
+                label="Município"
+                variant="outlined"
+                value={props.endereco.noMunicipio}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Bairro"
                 variant="outlined"
-                value={props.bairro}
+                value={props.endereco.dsBairro}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Logradouro"
                 variant="outlined"
-                value={props.logradouro}
+                value={props.endereco.dsLogradouro}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Número"
                 variant="outlined"
-                value={props.numero}
+                value={props.endereco.dsNumero}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Complemento"
                 variant="outlined"
-                value={props.complemento}
+                value={props.endereco.dsComplemento}
             />
         </Grid>
     </Grid>
@@ -125,27 +133,33 @@ InformationStep.propTypes = {
     name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    cep: PropTypes.string.isRequired,
-    municipio: PropTypes.string.isRequired,
-    uf: PropTypes.string.isRequired,
-    logradouro: PropTypes.string.isRequired,
-    complemento: PropTypes.string,
-    numero: PropTypes.string,
-    bairro: PropTypes.string.isRequired,
-
+    endereco: PropTypes.shape({
+        nuCep: PropTypes.string.isRequired,
+        coMunicipio: PropTypes.string.isRequired,
+        noMunicipio: PropTypes.string.isRequired,
+        sgUf: PropTypes.string.isRequired,
+        dsLogradouro: PropTypes.string.isRequired,
+        dsComplemento: PropTypes.string,
+        dsNumero: PropTypes.string,
+        dsBairro: PropTypes.string.isRequired,
+    }).isRequired,
 }
+
 
 const mapStateToProps = state => ({
     name: state.user.name,
     username: state.user.username,
     password: state.user.password,
-    cep: state.user.cep,
-    municipio: state.user.municipio,
-    uf: state.user.uf,
-    logradouro: state.user.logradouro,
-    complemento: state.user.complemento,
-    numero: state.user.numero,
-    bairro: state.user.bairro,
+    endereco: {
+        nuCep: state.user.cep,
+        coMunicipio: state.user.ibge,
+        noMunicipio: state.user.municipio,
+        sgUf: state.user.uf,
+        dsLogradouro: state.user.logradouro,
+        dsBairro: state.user.bairro,
+        dsNumero: state.user.numero,
+        dsComplemento: state.user.complemento,
+    },
 })
 
 const mapDispatchToProps = dispatch => ({
