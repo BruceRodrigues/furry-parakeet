@@ -9,6 +9,7 @@ import * as Actions from './UserActions'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class InformationStep extends React.Component {
 
@@ -184,8 +185,8 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(InformationStep)
+)(InformationStep))
 

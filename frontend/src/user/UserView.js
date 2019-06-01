@@ -6,6 +6,7 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Grid from '@material-ui/core/Grid'
 import InformationStep from './InformationStep'
+import { Route, withRouter } from 'react-router-dom'
 
 const steps = ['Perfil', 'Informações gerais']
 
@@ -27,7 +28,7 @@ class View extends React.Component {
                         </Stepper>
                     </Grid>
                     <Grid item xs={12}>
-                        <InformationStep />
+                        <Route path={`${this.props.match.url}/info`} component={InformationStep}/>
                     </Grid>
                 </Grid>
             </div>
@@ -49,7 +50,7 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(View)
+)(View))

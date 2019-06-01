@@ -6,20 +6,23 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Paper from '@material-ui/core/Paper'
 import './App.css';
 import UserView from './user/UserView'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <AppBar position="static">
-        <ToolBar>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-        </ToolBar>
-      </AppBar>
-      <Paper className="content">
-        <UserView />
-      </Paper>
+      <Router>
+        <AppBar position="static">
+          <ToolBar>
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+          </ToolBar>
+        </AppBar>
+        <Paper className="content">
+          <Route path="/user" component={UserView} />
+        </Paper>
+      </Router>
     </div>
   );
 }
