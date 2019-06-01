@@ -1,7 +1,4 @@
-import {
-    SAVE_USER,
-    USER_SAVED,
-} from './action-types'
+import * as Types from './action-types'
 import { URL } from '../app/index'
 
 import axios from 'axios'
@@ -15,6 +12,14 @@ export const saveUser = (user) => {
 
 const userSaved = () => (
     {
-        type: USER_SAVED,
+        type: Types.USER_SAVED,
+    }
+)
+
+export const formChanged = (key, value) => (
+    {
+        type: Types.FORM_CHANGED,
+        key: key,
+        value: value
     }
 )

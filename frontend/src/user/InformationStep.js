@@ -4,6 +4,8 @@ import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
+import * as Actions from './UserActions'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -13,9 +15,9 @@ class InformationStep extends React.Component {
     render() {
         return (
             <div>
-                <form autoComplete="off">
+                <form autoComplete="off" onSubmit={() => this.props.onSaveClicked(this.props)}>
                     <UsuarioInfo props={this.props} />
-                    <EnderecoInfo endereco={this.props.endereco}/>
+                    <EnderecoInfo endereco={this.props.endereco} onChange={(key, value) => this.props.onFormChanged(key, value)}/>
                     <Button variant="contained" color="primary" type="submit">Salvar</Button>
                 </form>
             </div>
@@ -38,6 +40,7 @@ const UsuarioInfo = ({ props }) =>
                     variant="outlined"
                     fullWidth
                     value={props.name}
+                    onChange={e => props.onFormChanged('name', e.target.value)}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -46,6 +49,7 @@ const UsuarioInfo = ({ props }) =>
                     variant="outlined"
                     fullWidth
                     value={props.username}
+                    onChange={e => props.onFormChanged('username', e.target.value)}
                 />
             </Grid>
             <Grid item xs={6}>
@@ -55,13 +59,14 @@ const UsuarioInfo = ({ props }) =>
                     type="password"
                     fullWidth
                     value={props.password}
+                    onChange={e => props.onFormChanged('password', e.target.value)}
                 />
             </Grid>
         </Grid>
     )
 
 
-const EnderecoInfo = (props) => (
+const EnderecoInfo = ({endereco, onChange}) => (
     <Grid container justify="flex-start" spacing={8} alignItems="flex-start">
         <Grid item xs={12}>
             <Typography variant="h5" align="left">Endereço</Typography>
@@ -73,21 +78,24 @@ const EnderecoInfo = (props) => (
             <TextField
                 label="CEP"
                 variant="outlined"
-                value={props.endereco.nuCep}
+                value={endereco.nuCep}
+                onChange={e => onChange('cep', e.target.value)}
             />
         </Grid>
         <Grid item xs={1}>
             <TextField
                 label="UF"
                 variant="outlined"
-                value={props.endereco.sgUf}
+                value={endereco.sgUf}
+                onChange={e => onChange('uf', e.target.value)}
             />
         </Grid>
         <Grid item xs={1}>
             <TextField
                 label="IBGE"
                 variant="outlined"
-                value={props.endereco.coMunicipio}
+                value={endereco.coMunicipio}
+                onChange={e => onChange('ibge', e.target.value)}
             />
         </Grid>
         <Grid item xs={6}>
@@ -95,35 +103,40 @@ const EnderecoInfo = (props) => (
                 fullWidth
                 label="Município"
                 variant="outlined"
-                value={props.endereco.noMunicipio}
+                value={endereco.noMunicipio}
+                onChange={e => onChange('municipio', e.target.value)}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Bairro"
                 variant="outlined"
-                value={props.endereco.dsBairro}
+                value={endereco.dsBairro}
+                onChange={e => onChange('bairro', e.target.value)}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Logradouro"
                 variant="outlined"
-                value={props.endereco.dsLogradouro}
+                value={endereco.dsLogradouro}
+                onChange={e => onChange('logradouro', e.target.value)}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Número"
                 variant="outlined"
-                value={props.endereco.dsNumero}
+                value={endereco.dsNumero}
+                onChange={e => onChange('numero', e.target.value)}
             />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 label="Complemento"
                 variant="outlined"
-                value={props.endereco.dsComplemento}
+                value={endereco.dsComplemento}
+                onChange={e => onChange('complemento', e.target.value)}
             />
         </Grid>
     </Grid>
@@ -164,7 +177,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onSaveClicked: (props) => {
-        console.log(props)
+        dispatch(Actions.saveUser(props))
+    },
+    onFormChanged: (key, value) => {
+        dispatch(Actions.formChanged(key, value))
     }
 })
 

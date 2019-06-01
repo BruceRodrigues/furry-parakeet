@@ -1,4 +1,4 @@
-import {USER_SAVED} from './action-types'
+import * as Types from './action-types'
 
 const defaultState = {
     step: 1,
@@ -17,9 +17,11 @@ const defaultState = {
 
 const user = (state = defaultState, action) => {
     switch (action.type) {
-        case USER_SAVED:
-            console.log('USUARIO SALVO')
+        case Types.USER_SAVED:
             return {...state}
+        case Types.FORM_CHANGED:
+            return {...state,
+                [action.key]: action.value}
         default:
             return {...state}
     }

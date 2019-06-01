@@ -13,11 +13,13 @@ public class UserController {
 
     private UserRepository repository;
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<User> get(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.repository.findById(id).get(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/add", consumes = "application/json")
     public ResponseEntity<String> add(@RequestBody User user) {
         this.repository.save(user);
