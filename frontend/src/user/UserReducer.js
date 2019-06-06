@@ -1,7 +1,7 @@
 import * as Types from './action-types'
 
 const defaultState = {
-    step: 1,
+    step: 0,
     name: '',
     username: '',
     password: '',
@@ -13,6 +13,11 @@ const defaultState = {
     bairro: '',
     complemento: 'Complemento',
     numero: '',
+    profiles: [],
+    profileSelected: null,
+    backButton: false,
+    nextButton: false,
+    finishButton: false,
 }
 
 const user = (state = defaultState, action) => {
@@ -22,6 +27,18 @@ const user = (state = defaultState, action) => {
         case Types.FORM_CHANGED:
             return {...state,
                 [action.key]: action.value}
+        case Types.PROFILES_LOADED:
+            return {...state,
+                profiles: action.profiles,
+            }
+        case Types.SELECT_PROFILE:
+            return {...state,
+                profileSelected: action.id,
+            }
+        case Types.NEXT:
+            return {...state,
+                step: state.step++,
+            }
         default:
             return {...state}
     }

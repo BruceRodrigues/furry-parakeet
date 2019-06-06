@@ -1,6 +1,7 @@
-package com.furry.user;
+package com.furry.user.controller;
 
 import com.furry.user.model.User;
+import com.furry.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

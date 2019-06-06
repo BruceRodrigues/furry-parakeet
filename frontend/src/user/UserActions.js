@@ -10,16 +10,37 @@ export const saveUser = (user) => {
     }
 }
 
-const userSaved = () => (
-    {
+const userSaved = () => ({
         type: Types.USER_SAVED,
-    }
-)
+})
 
-export const formChanged = (key, value) => (
-    {
+export const formChanged = (key, value) => ({
         type: Types.FORM_CHANGED,
         key: key,
         value: value
-    }
-)
+})
+
+export const loadProfiles = () => {
+    return dispatch => {
+        axios.get(`${URL}/profile/all`)
+            .then(res => dispatch(profilesLoaded(res.data)))
+    }   
+}
+
+export const profilesLoaded = (data) => ({
+    type: Types.PROFILES_LOADED,
+    profiles: data,
+})
+
+export const selectProfile = (id) => ({
+    type: Types.SELECT_PROFILE,
+    id: id,
+})
+
+export const next = () => ({
+    type: Types.NEXT,
+})
+
+export const previous = () => ({
+    type: Types.PREVIOUS,
+})
