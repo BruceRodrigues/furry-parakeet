@@ -9,3 +9,7 @@ spring:
           uri: https://github.com/BruceRodrigues/config-repo
   application:
     name: config
+  security:
+    user:
+      name: config
+      password: secret
