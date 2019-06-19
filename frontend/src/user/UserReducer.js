@@ -37,7 +37,11 @@ const user = (state = defaultState, action) => {
             }
         case Types.NEXT:
             return {...state,
-                step: state.step++,
+                step: state.step+1,
+            }
+        case Types.PREVIOUS: 
+            return {...state,
+                step: state.step-1,
             }
         default:
             return {...state}

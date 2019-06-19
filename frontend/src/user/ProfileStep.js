@@ -27,13 +27,31 @@ class ProfileStep extends React.Component {
                         />
                     </Grid>
                 ))}
-                <Grid item>
-                    <Button color="primary"
-                        variant="contained"
-                        component={Link}
-                    to={this.props.match.url.replace('/profile', '/info')}
-                    >
-                        Avançar</Button>
+                <Grid item xs={12}>
+                    <Grid container spacing={8}>
+                        <Grid item xs={6}>
+                            <Button
+                                variant="outlined"
+                                size="large"
+                                fullWidth
+                                // component={Link}
+                                // onClick={() => this.props.next()}
+                                // to={this.props.match.url.replace('/profile', '/info')}
+                            >
+                                Cancelar</Button>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button color="primary"
+                                variant="contained"
+                                size="large"
+                                fullWidth
+                                component={Link}
+                                onClick={() => this.props.next()}
+                                to={this.props.match.url.replace('/profile', '/info')}
+                            >
+                                Avançar</Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         )

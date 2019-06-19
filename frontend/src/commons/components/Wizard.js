@@ -11,8 +11,8 @@ export default class Wizard extends React.Component {
     render() {
         return (
             <div>
-                <Grid container justify="center" spacing={16}>
-                    <Grid item xs={6} md={6} sm={6} lg={6}>
+                <Grid container direction="column" spacing={16}>
+                    <Grid item xs={12}>
                         <Stepper activeStep={this.props.current}>
                             {this.props.steps.map((step, index) => {
                                 return (
