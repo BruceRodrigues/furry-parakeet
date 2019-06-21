@@ -3,6 +3,25 @@ import { URL } from '../app/index'
 
 import axios from 'axios'
 
+//tests
+const profiles = [
+    {
+        id: 0,
+        dsPerfil: "Admin",
+        dsIcon: "add_circle",
+    },
+    {
+        id: 1,
+        dsPerfil: "Gestor",
+        dsIcon: "add_circle",
+    },
+    {
+        id: 2,
+        dsPerfil: "Par",
+        dsIcon: "add_circle",
+    },
+]
+
 export const saveUser = (user) => {
     return dispatch => {
         axios.post(`${URL}/user/add`, user)
@@ -21,10 +40,11 @@ export const formChanged = (key, value) => ({
 })
 
 export const loadProfiles = () => {
-    return dispatch => {
-        axios.get(`${URL}/profile/all`)
-            .then(res => dispatch(profilesLoaded(res.data)))
-    }   
+return profilesLoaded(profiles)
+    // return dispatch => {
+    //     axios.get(`${URL}/profile/all`)
+    //         .then(res => dispatch(profilesLoaded(res.data)))
+    // }   
 }
 
 export const profilesLoaded = (data) => ({

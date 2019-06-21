@@ -10,28 +10,26 @@ export default class Wizard extends React.Component {
 
     render() {
         return (
-            <div>
-                <Grid container direction="column" spacing={16}>
-                    <Grid item xs={12}>
-                        <Stepper activeStep={this.props.current}>
-                            {this.props.steps.map((step, index) => {
-                                return (
-                                    <Step key={index}>
-                                        <StepLabel>{step.label}</StepLabel>
-                                    </Step>
-                                )
-                            })}
-                        </Stepper>
-                    </Grid>
-                    <Grid item xs={12}>
-                        {this.props.steps.map((step) => {
+            <Grid container direction="column" spacing={16}>
+                <Grid item xs={12}>
+                    <Stepper activeStep={this.props.current}>
+                        {this.props.steps.map((step, index) => {
                             return (
-                                <Route key={step.path} path={`${this.props.url}${step.path}`} component={step.component} />
+                                <Step key={index}>
+                                    <StepLabel>{step.label}</StepLabel>
+                                </Step>
                             )
                         })}
-                    </Grid>
+                    </Stepper>
                 </Grid>
-            </div>
+                <Grid item xs={12}>
+                    {this.props.steps.map((step) => {
+                        return (
+                            <Route key={step.path} path={`${this.props.url}${step.path}`} component={step.component} />
+                        )
+                    })}
+                </Grid>
+            </Grid>
         )
     }
 }

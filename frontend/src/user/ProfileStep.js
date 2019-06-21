@@ -34,9 +34,8 @@ class ProfileStep extends React.Component {
                                 variant="outlined"
                                 size="large"
                                 fullWidth
-                                // component={Link}
-                                // onClick={() => this.props.next()}
-                                // to={this.props.match.url.replace('/profile', '/info')}
+                                component={Link}
+                                to={this.props.match.url.replace('/user/profile', '/login')}
                             >
                                 Cancelar</Button>
                         </Grid>
