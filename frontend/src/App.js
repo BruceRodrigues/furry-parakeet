@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import MainView from './main/Main'
 import UserView from './user/UserView'
 import LoginView from './login/LoginView'
 import { BrowserRouter as Router, Route } from 'react-router-dom'

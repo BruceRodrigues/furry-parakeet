@@ -2,8 +2,19 @@ import React from 'react'
 import { Grid, Paper, Avatar, Typography, TextField, Button, Link } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { withRouter, Link as RouterLink } from 'react-router-dom'
+import { createStyles } from '@material-ui/core/styles'
 
 import './login.css'
+import { blue } from '@material-ui/core/colors';
+
+const styles = createStyles({
+    big: {
+        height: 80,
+        width: 80,
+        backgroundColor: blue[100],
+        color: '#fff',
+    }
+})
 
 class LoginView extends React.Component {
 
@@ -22,8 +33,8 @@ class LoginView extends React.Component {
                     spacing={16}
                     className="form">
                     <Grid item>
-                        <Avatar>
-                            <LockOutlinedIcon color="secondary" />
+                        <Avatar style={styles.big}>
+                            <LockOutlinedIcon style={{fontSize: '60px'}}/>
                         </Avatar>
                     </Grid>
                     <Grid item xs={12}>
@@ -46,7 +57,7 @@ class LoginView extends React.Component {
                             id="senha"
                             label="Senha"
                             type="password"
-                            fullWidth
+                        fullWidth
                             required
                         />
                     </Grid>
