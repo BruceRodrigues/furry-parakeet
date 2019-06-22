@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import user from '../user/reducer'
+import user from '../user/UserReducer'
 
-export default combineReducers(
+export const URL = 'http://localhost:8210/'
+
+export default combineReducers({
     user
-)
+})

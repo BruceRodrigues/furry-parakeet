@@ -1,0 +1,7 @@
+export const SAVE_USER = 'SAVE_USER'
+export const USER_SAVED = 'USER_SAVED'
+export const FORM_CHANGED = 'FORM_CHANGED'
+export const PROFILES_LOADED = 'LOAD_PROFILES'
+export const SELECT_PROFILE = 'SELECT_PROFILE'
+export const NEXT = 'NEXT'
+export const PREVIOUS = 'PREVIOUS'
