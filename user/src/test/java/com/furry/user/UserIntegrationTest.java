@@ -71,7 +71,8 @@ public class UserIntegrationTest {
                         "\"dsComplemento\":\"Complemento\"," +
                         "\"dsBairro\":\"Bairro\"," +
                         "\"dsNumero\":\"123\"" +
-                        "}" +
+                        "}," +
+                    "\"perfis\":[]" +
                     "}"));
 	}
 
