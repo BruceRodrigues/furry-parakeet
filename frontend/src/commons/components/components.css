@@ -1,18 +1,12 @@
 
-.profile-card {
-    max-width: 200px;
-    min-width: 150px;
-}
-
 .profile-card:hover {
     cursor: pointer;
+    color: blue;
     box-shadow: 0px 1px 3px 0px blue, 
                 0px 1px 1px 0px blue, 
                 0px 2px 1px -1px blue;
 }
 
 .selected {
-    box-shadow: 0px 1px 3px 0px red, 
-                0px 1px 1px 0px red, 
-                0px 2px 1px -1px red;
+    color: blue;
 }

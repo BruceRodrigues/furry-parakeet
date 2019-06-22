@@ -5,13 +5,25 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Grid from '@material-ui/core/Grid'
 import { Route } from 'react-router-dom'
+import { Paper, createStyles } from '@material-ui/core'
+
+const styles = createStyles({
+    wizard: {
+        minHeight: '100vh',
+    },
+    stepper: {
+        height: '15%',
+    },
+    content: {
+    }
+})
 
 export default class Wizard extends React.Component {
 
     render() {
         return (
-            <Grid container direction="column" spacing={16}>
-                <Grid item xs={12}>
+            <Grid container spacing={16} component={Paper} square elevation={2} style={styles.wizard}>
+                <Grid item xs={12} sm={12} md={12} style={styles.stepper}>
                     <Stepper activeStep={this.props.current}>
                         {this.props.steps.map((step, index) => {
                             return (
@@ -22,7 +34,7 @@ export default class Wizard extends React.Component {
                         })}
                     </Stepper>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} style={styles.content}>
                     {this.props.steps.map((step) => {
                         return (
                             <Route key={step.path} path={`${this.props.url}${step.path}`} component={step.component} />

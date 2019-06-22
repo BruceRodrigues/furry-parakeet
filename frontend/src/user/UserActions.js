@@ -7,18 +7,21 @@ import axios from 'axios'
 const profiles = [
     {
         id: 0,
-        dsPerfil: "Admin",
-        dsIcon: "add_circle",
+        dsPerfil: "Gerente de projeto",
+        dsIcon: "people",
+        dsProfile: "Como gerente de projetos você é capaz de criar e monitorar novos projetos",
     },
     {
         id: 1,
-        dsPerfil: "Gestor",
-        dsIcon: "add_circle",
+        dsPerfil: "Desenvolvedor",
+        dsIcon: "code",
+        dsProfile: "Como desenvolvedor você pode monitorar seus projetos, alterando seu percentual de execução"
     },
     {
         id: 2,
-        dsPerfil: "Par",
-        dsIcon: "add_circle",
+        dsPerfil: "Analista",
+        dsIcon: "devices_other",
+        dsProfile: "Como analista você pode adicionar novos documentos ao seus projetos"
     },
 ]
 

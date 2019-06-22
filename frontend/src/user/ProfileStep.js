@@ -6,6 +6,13 @@ import { connect } from 'react-redux'
 import * as Actions from './UserActions'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import { createStyles } from '@material-ui/core';
+
+const styles = createStyles({
+    page: {
+        height: '100%',
+    },
+})
 
 class ProfileStep extends React.Component {
 
@@ -15,13 +22,14 @@ class ProfileStep extends React.Component {
 
     render() {
         return (
-            <Grid container justify="flex-end" direction="row" spacing={16}>
+            <Grid container justify="flex-end" direction="row" spacing={16} alignContent="space-between" style={styles.page}>
                 {this.props.items.map(profile => (
                     <Grid item key={profile.id} xs={4}>
                         <C.ProfileCard
                             key={profile.id}
                             label={profile.dsPerfil}
                             icon={profile.dsIcon}
+                            description={profile.dsProfile}
                             selected={profile.id === this.props.selected}
                             onClick={() => this.props.onProfileClicked(profile.id)}
                         />
@@ -68,6 +76,7 @@ ProfileStep.propTypes = {
             id: PropTypes.number.isRequired,
             icon: PropTypes.string.isRequired,
             label: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
         })
     )
 }

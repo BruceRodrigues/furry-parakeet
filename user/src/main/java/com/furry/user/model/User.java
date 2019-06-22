@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,5 +34,13 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CO_ENDERECO")
     private Endereco endereco;
+
+    @ManyToMany
+    @JoinTable(name = "RL_PERFIL_USUARIO",
+        joinColumns = {@JoinColumn(name="CO_USUARIO")},
+        inverseJoinColumns = {@JoinColumn(name = "CO_PERFIL")})
+    private List<Perfil> perfis = new ArrayList<>();
+
+
 
 }

@@ -195,6 +195,11 @@ InformationStep.propTypes = {
         dsNumero: PropTypes.string,
         dsBairro: PropTypes.string.isRequired,
     }).isRequired,
+    perfis: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+        })
+    ).isRequired,
 }
 
 
@@ -212,6 +217,7 @@ const mapStateToProps = state => ({
         dsNumero: state.user.numero,
         dsComplemento: state.user.complemento,
     },
+    perfis: state.user.profiles,
 })
 
 const mapDispatchToProps = dispatch => ({
