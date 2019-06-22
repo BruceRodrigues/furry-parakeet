@@ -15,9 +15,6 @@ const defaultState = {
     numero: '',
     profiles: [],
     profileSelected: null,
-    backButton: false,
-    nextButton: false,
-    finishButton: false,
 }
 
 const user = (state = defaultState, action) => {
@@ -41,7 +38,7 @@ const user = (state = defaultState, action) => {
             }
         case Types.PREVIOUS: 
             return {...state,
-                step: state.step-1,
+                step: state.step === 0 ? 0 : state.step-1,
             }
         default:
             return {...state}
