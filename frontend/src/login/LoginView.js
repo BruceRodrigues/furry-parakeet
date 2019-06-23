@@ -72,7 +72,9 @@ class LoginView extends React.Component {
                     </Grid>
                     <Grid container justify="space-between">
                         <Grid item>
-                            <Link variant="body2" component="button">Esqueceu sua senha?</Link>
+                            <Link variant="body2" component={RouterLink}
+                                to={this.props.match.url.replace('/login', 'remember')}
+                            >Esqueceu sua senha?</Link>
                         </Grid>
                         <Grid item>
                             <Link variant="body2" component={RouterLink}
