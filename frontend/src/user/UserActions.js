@@ -7,21 +7,21 @@ import axios from 'axios'
 const profiles = [
     {
         id: 0,
-        dsPerfil: "Gerente de projeto",
+        noPerfil: "Gerente de projeto",
         dsIcon: "people",
-        dsProfile: "Como gerente de projetos você é capaz de criar e monitorar novos projetos",
+        dsPerfil: "Como gerente de projetos você é capaz de criar e monitorar novos projetos",
     },
     {
         id: 1,
-        dsPerfil: "Desenvolvedor",
+        noPerfil: "Desenvolvedor",
         dsIcon: "code",
-        dsProfile: "Como desenvolvedor você pode monitorar seus projetos, alterando seu percentual de execução"
+        dsPerfil: "Como desenvolvedor você pode monitorar seus projetos, alterando seu percentual de execução"
     },
     {
         id: 2,
-        dsPerfil: "Analista",
+        noPerfil: "Analista",
         dsIcon: "devices_other",
-        dsProfile: "Como analista você pode adicionar novos documentos ao seus projetos"
+        dsPerfil: "Como analista você pode adicionar novos documentos ao seus projetos"
     },
 ]
 
@@ -43,11 +43,12 @@ export const formChanged = (key, value) => ({
 })
 
 export const loadProfiles = () => {
-return profilesLoaded(profiles)
-    // return dispatch => {
-    //     axios.get(`${URL}/profile/all`)
-    //         .then(res => dispatch(profilesLoaded(res.data)))
-    // }   
+// return profilesLoaded(profiles)
+    return dispatch => {
+        dispatch({type: Types.LOAD_PROFILES})
+        axios.get(`${URL}/profile/all`)
+            .then(res => dispatch(profilesLoaded(res.data)))
+    }   
 }
 
 export const profilesLoaded = (data) => ({

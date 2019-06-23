@@ -5,14 +5,15 @@ USE USUARIO;
 CREATE TABLE USUARIO.TB_PERFIL
 (
     CO_PERFIL int PRIMARY KEY,
-    DS_PERFIL VARCHAR(255) NOT NULL,
-    DS_ICON VARCHAR(255) NOT NULL
+    NO_PERFIL VARCHAR(255) NOT NULL,
+    DS_ICON VARCHAR(255) NOT NULL,
+    DS_PERFIL VARCHAR(500) NOT NULL
 );
 ALTER TABLE TB_PERFIL COMMENT = 'Tabela domínio com os possíveis perfis';
 
-INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, DS_PERFIL, DS_ICON) VALUES (0, 'Leito', 'face');
-INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, DS_PERFIL, DS_ICON) VALUES (1, 'Técnico', 'assignment_ind');
-INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, DS_PERFIL, DS_ICON) VALUES (2, 'Gestor Federal', 'android');
+INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, NO_PERFIL, DS_ICON, DS_PERFIL) VALUES (0, 'Gerente de projeto', 'people', 'Como gerente de projetos você é capaz de criar e monitorar novos projetos');
+INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, NO_PERFIL, DS_ICON, DS_PERFIL) VALUES (1, 'Desenvolvedor', 'code', 'Como desenvolvedor você pode monitorar seus projetos, alterando seu percentual de execução');
+INSERT INTO USUARIO.TB_PERFIL(CO_PERFIL, NO_PERFIL, DS_ICON, DS_PERFIL) VALUES (2, 'Analista', 'devices_other', 'Como analista você pode adicionar novos documentos ao seus projetos');
 
 # --TB_ENDERECO
 CREATE TABLE USUARIO.TB_ENDERECO

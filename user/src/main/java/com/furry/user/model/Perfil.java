@@ -15,6 +15,9 @@ public class Perfil {
     @Column(name = "CO_PERFIL")
     private Long id;
 
+    @Column(name = "NO_PERFIL")
+    private String noPerfil;
+
     @Column(name = "DS_PERFIL")
     private String dsPerfil;
 

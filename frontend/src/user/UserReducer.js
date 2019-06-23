@@ -13,6 +13,7 @@ const defaultState = {
     bairro: '',
     complemento: '',
     numero: '',
+    loadingProfiles: false,
     profiles: [],
     profileSelected: null,
 }
@@ -24,9 +25,14 @@ const user = (state = defaultState, action) => {
         case Types.FORM_CHANGED:
             return {...state,
                 [action.key]: action.value}
+        case Types.LOAD_PROFILES:
+            return {...state,
+                loadingProfiles: true,
+            }
         case Types.PROFILES_LOADED:
             return {...state,
                 profiles: action.profiles,
+                loadingProfiles: false,
             }
         case Types.SELECT_PROFILE:
             return {...state,
