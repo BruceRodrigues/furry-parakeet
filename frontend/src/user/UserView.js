@@ -5,7 +5,7 @@ import InformationStep from './InformationStep'
 import ProfileStep from './ProfileStep'
 import { withRouter } from 'react-router-dom'
 import Wizard from './../commons/components/Wizard'
-import { Grid, createStyles } from '@material-ui/core'
+import { Grid, Paper, createStyles } from '@material-ui/core'
 import { grey } from '@material-ui/core/colors'
 
 const steps = [
@@ -22,22 +22,30 @@ const steps = [
 ]
 
 const styles = createStyles({
-    page: {
+    root: {
         backgroundColor: grey[100],
     },
+    page: {
+        minHeight: '100vh',
+        padding: '0 20px',
+    },
+    wizard: {
+        height: '100%',
+    }
 })
 
 class View extends React.Component {
 
     render() {
         return (
-            <div>
-                <Grid container justify="center" style={styles.page}>
-                    <Grid item xs={6}>
+            <div style={styles.root}>
+                <Grid container justify="center">
+                    <Grid item xs={6}  style={styles.page} component={Paper} square elevation={2}>
                         <Wizard
                             steps={steps}
                             url={this.props.match.url}
                             current={this.props.current}
+                            style={styles.wizard}
                         />
                     </Grid>
                 </Grid>
