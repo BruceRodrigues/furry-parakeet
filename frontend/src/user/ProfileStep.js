@@ -1,105 +1,121 @@
-import React from 'react'
-import Grid from '@material-ui/core/Grid'
+import * as Actions from './user.actions'
 import * as C from '../commons/components'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import * as Actions from './UserActions'
+
+import { CircularProgress, createStyles } from '@material-ui/core'
+
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
-import { createStyles, CircularProgress } from '@material-ui/core';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
 
 const styles = createStyles({
-    page: {
-        height: '100%',
-    },
+  page: {
+    height: '100%',
+  },
 })
 
 class ProfileStep extends React.Component {
+  componentWillMount() {
+    this.props.loadProfiles()
+  }
 
-    componentWillMount() {
-        this.props.loadProfiles()
-    }
-
-    render() {
-        return (
-            <Grid container justify="flex-end" direction="row" spacing={16} alignContent="space-between" style={styles.page}>
-                {this.props.profilesLoading ? <CircularProgress /> :
-                    this.props.items.map(profile => (
-                    <Grid item key={profile.id} xs={4}>
-                        <C.ProfileCard
-                            key={profile.id}
-                            label={profile.noPerfil}
-                            icon={profile.dsIcon}
-                            description={profile.dsPerfil}
-                            selected={profile.id === this.props.selected}
-                            onClick={() => this.props.onProfileClicked(profile.id)}
-                        />
-                    </Grid>
-                ))}
-                <Grid item xs={12}>
-                    <Grid container spacing={8}>
-                        <Grid item xs={6}>
-                            <Button
-                                variant="outlined"
-                                size="large"
-                                fullWidth
-                                component={Link}
-                                to={this.props.match.url.replace('/user/profile', '/login')}
-                            >Cancelar</Button>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Button color="primary"
-                                variant="contained"
-                                size="large"
-                                fullWidth
-                                component={Link}
-                                onClick={() => this.props.next()}
-                                to={this.props.match.url.replace('/profile', '/info')}
-                            >Avançar</Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
+  render() {
+    return (
+      <Grid
+        container
+        justify='flex-end'
+        direction='row'
+        spacing={16}
+        alignContent='space-between'
+        style={styles.page}
+      >
+        {this.props.profilesLoading ? (
+          <CircularProgress />
+        ) : (
+          this.props.items.map(profile => (
+            <Grid item key={profile.id} xs={4}>
+              <C.ProfileCard
+                key={profile.id}
+                label={profile.noPerfil}
+                icon={profile.dsIcon}
+                description={profile.dsPerfil}
+                selected={profile.id === this.props.selected}
+                onClick={() => this.props.onProfileClicked(profile.id)}
+              />
             </Grid>
-        )
-    }
+          ))
+        )}
+        <Grid item xs={12}>
+          <Grid container spacing={8}>
+            <Grid item xs={6}>
+              <Button
+                variant='outlined'
+                size='large'
+                fullWidth
+                component={Link}
+                to={this.props.match.url.replace('/user/profile', '/login')}
+              >
+                Cancelar
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                color='primary'
+                variant='contained'
+                size='large'
+                fullWidth
+                component={Link}
+                onClick={() => this.props.next()}
+                to={this.props.match.url.replace('/profile', '/info')}
+              >
+                Avançar
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    )
+  }
 }
 
 ProfileStep.defaultProps = {
-    items: [],
+  items: [],
 }
 
 ProfileStep.propTypes = {
-    selected: PropTypes.number,
-    profilesLoading: PropTypes.bool.isRequired,
-    items: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            icon: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-        })
-    )
+  selected: PropTypes.number,
+  profilesLoading: PropTypes.bool.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      icon: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ),
 }
 
 const mapStateToProps = state => ({
-    selected: state.user.profileSelected,
-    items: state.user.profiles,
-    profilesLoading: state.user.loadingProfiles,
+  selected: state.user.profileSelected,
+  items: state.user.profiles,
+  profilesLoading: state.user.loadingProfiles,
 })
 
 const mapDispatchToProps = dispatch => ({
-    onProfileClicked: (id) => {
-        dispatch(Actions.selectProfile(id))
-    },
-    loadProfiles: () => {
-        dispatch(Actions.loadProfiles())
-    },
-    next: () => {
-        dispatch(Actions.next())
-    }
+  onProfileClicked: id => {
+    dispatch(Actions.selectProfile(id))
+  },
+  loadProfiles: () => {
+    dispatch(Actions.loadProfiles())
+  },
+  next: () => {
+    dispatch(Actions.next())
+  },
 })
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProfileStep)

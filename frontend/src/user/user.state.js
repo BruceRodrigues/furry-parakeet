@@ -1,0 +1,17 @@
+export default {
+  step: 0,
+  name: '',
+  username: '',
+  password: '',
+  cep: '',
+  municipio: '',
+  ibge: '',
+  uf: '',
+  logradouro: '',
+  bairro: '',
+  complemento: '',
+  numero: '',
+  loadingProfiles: false,
+  profiles: [],
+  profileSelected: null,
+}

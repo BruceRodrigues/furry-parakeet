@@ -15,7 +15,6 @@ public class PerfilController {
 
     PerfilRepository perfilRepository;
 
-    @CrossOrigin
     @GetMapping("/all")
     public Iterable<Perfil> getAll() {
         return this.perfilRepository.findAll();

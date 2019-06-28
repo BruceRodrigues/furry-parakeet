@@ -17,6 +17,7 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+		<spring-boot.version>2.1.5.RELEASE</spring-boot.version>
 		<mysql.version>8.0.16</mysql.version>
 		<lombok.version>1.18.8</lombok.version>
 		<h2.version>1.4.197</h2.version>
@@ -71,7 +72,12 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
-				<version>2.1.5.RELEASE</version>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>
