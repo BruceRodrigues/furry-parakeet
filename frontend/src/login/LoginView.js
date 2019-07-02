@@ -16,6 +16,7 @@ import { Link as RouterLink, withRouter } from 'react-router-dom'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { blue } from '@material-ui/core/colors'
 import { connect } from 'react-redux'
 import { createStyles } from '@material-ui/core/styles'
@@ -31,8 +32,10 @@ const styles = createStyles({
 
 class LoginView extends React.Component {
   render() {
+    if (this.props.authenticated) return <Redirect to='/main' />
+
     return (
-      <form>
+      <form onSubmit={() => this.props.onSignInClicked(this.props)}>
         <Grid container className='login' style={{ height: '100vh' }}>
           <Grid item xs={false} sm={4} md={7} className='image' />
           <Grid
@@ -94,6 +97,8 @@ class LoginView extends React.Component {
                 size='large'
                 variant='contained'
                 color='primary'
+                type='submit'
+                onClick={() => this.props.onSignInClicked(this.props)}
               >
                 Entrar
               </Button>
@@ -133,6 +138,7 @@ LoginView.propTypes = {
 const mapStateToProps = state => ({
   username: state.login.username,
   password: state.login.password,
+  authenticated: state.login.authenticated,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -34,9 +34,9 @@ export const saveUser = user => {
   }
 }
 
-const userSaved = () => ({
+const userSaved = {
   type: Types.USER_SAVED,
-})
+}
 
 export const formChanged = (key, value) => ({
   type: Types.REGISTER_FORM_CHANGED,

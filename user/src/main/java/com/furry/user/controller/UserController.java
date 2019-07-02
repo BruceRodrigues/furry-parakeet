@@ -1,5 +1,6 @@
 package com.furry.user.controller;
 
+import com.furry.user.dto.LoginDto;
 import com.furry.user.model.User;
 import com.furry.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -14,13 +15,20 @@ public class UserController {
 
     private UserRepository repository;
 
-    @CrossOrigin
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<User> get(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.repository.findById(id).get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(path = "/login", consumes = "application/json")
+    public ResponseEntity<String> login(@RequestBody LoginDto dto) {
+        boolean exists = this.repository.existsUserByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+        if  (exists) {
+            return new ResponseEntity<>("Possui usuário", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Usuário não encontrado", HttpStatus.UNAUTHORIZED);
+    }
+
     @PostMapping(path = "/add", consumes = "application/json")
     public ResponseEntity<String> add(@RequestBody User user) {
         this.repository.save(user);
