@@ -19,7 +19,7 @@
 		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
 		<mysql.version>8.0.16</mysql.version>
 		<lombok.version>1.18.8</lombok.version>
-		<h2.version>1.4.197</h2.version>
+		<h2.version>2.1.210</h2.version>
 	</properties>
 
 	<modules>
